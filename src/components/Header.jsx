@@ -1,7 +1,7 @@
-import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon } from "@mui/material"
+import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, Button } from "@mui/material"
 import { styled, useTheme } from '@mui/material/styles';
 import logo from "../assets/logo.svg"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import MuiAppBar from '@mui/material/AppBar';
 import { ChevronLeftRounded, ChevronRightRounded, MenuRounded } from "@mui/icons-material";
 
@@ -56,6 +56,7 @@ const Header = () => {
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -64,6 +65,24 @@ const Header = () => {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setWindowWidth(window.innerWidth);
+    };
+
+    // Add event listener for window resize
+    window.addEventListener("resize", handleResize);
+
+    // Clean up event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  const options = ["Features", "Pricing", "Resources"];
+  const userOptions = ["Login", "Sign Up"]
+
   return (
     <Box sx={{ display: 'flex' }}>
       <CssBaseline />
@@ -78,20 +97,17 @@ const Header = () => {
             width: "100%",
             justifyContent: "space-between",
             alignItems: "center",
-
           }}
 
         >
-
           {/* Logo */}
-          <Box component='img' src={logo}
-          />
+          <Box component='img' src={logo} />
           <IconButton
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerOpen}
             sx={{
-              ...(open && { display: 'none' }),
+              ...(open && windowWidth < 768 && { display: 'none' }),
             }}
           >
             <MenuRounded htmlColor="var(--grayish-violet)" sx={{
@@ -109,50 +125,64 @@ const Header = () => {
               lg: "flex",
               md: "flex"
             }, width: "100%",
+            gap: 5,
+            ml: 5
           }}>
-            <ListItem>
-              <ListItemButton>
-                <Typography>
-                  Features
-                </Typography>
-              </ListItemButton>
+            {options.map((option, i) =>
+              <ListItem key={i} sx={{
+                m: 0, p: 0, width: "fit-content"
+              }}>
+                <ListItemButton sx={{ m: 0, p: 0, }}>
+                  <Typography sx={{
+                    color: "var(--grayish-violet)", p: 0
+                  }}>
+                    {option}
+                  </Typography>
+                </ListItemButton>
+              </ListItem>
+            )}
+          </List>
+
+          <List sx={{
+            display: {
+              sm: "none",
+              xs: "none",
+              lg: "flex",
+              md: "flex"
+            },
+            width: "100%",
+            justifyContent: "right",
+            alignItems: "center",
+            gap: 5
+
+          }}>
+            <ListItem sx={{
+              placeSelf: "flex-end",
+              m: 0, p: 0, width: "fit-content",
+            }}>
+              <Button variant="text" sx={{
+                textTransform: "none", margin: 0, boxShadow: 0, color: "var(--grayish-violet)"
+              }}>
+                Login
+              </Button>
             </ListItem>
 
-            <ListItem>
-              <ListItemButton>
-                <Typography>
-                  Pricing
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem>
-              <ListItemButton>
-                <Typography>
-                  Resources
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem>
-              <ListItemButton>
-                <Typography>
-                  Login
-                </Typography>
-              </ListItemButton>
-            </ListItem>
-
-            <ListItem>
-              <ListItemButton>
-                <Typography>
-                  Sign Up
-                </Typography>
-              </ListItemButton>
+            <ListItem sx={{
+              placeSelf: "flex-end",
+              m: 0, p: 0, width: "fit-content",
+            }}>
+              <Button variant="contained" sx={{
+                textTransform: "none", margin: 0, boxShadow: 0,
+              }}>
+                Sign Up
+              </Button>
             </ListItem>
           </List>
 
         </Toolbar>
       </AppBar>
+
+      {/* Mobile drawer */}
       <Drawer
         sx={{
           width: drawerWidth,
