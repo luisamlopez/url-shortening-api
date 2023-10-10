@@ -1,13 +1,9 @@
-import { Box, CssBaseline, IconButton } from "@mui/material"
+import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon } from "@mui/material"
+import { styled, useTheme } from '@mui/material/styles';
 import logo from "../assets/logo.svg"
 import { useState } from "react";
-import MenuIcon from '@mui/icons-material';
-import Toolbar from '@mui/material/Toolbar';
-import Drawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
-import Typography from '@mui/material/Typography';
-import Divider from '@mui/material/Divider';
-import IconButton from '@mui/material/IconButton';
+import { ChevronLeftRounded, ChevronRightRounded, MenuRounded } from "@mui/icons-material";
 
 const drawerWidth = 240;
 
@@ -56,7 +52,8 @@ const DrawerHeader = styled('div')(({ theme }) => ({
   justifyContent: 'flex-start',
 }));
 
-const Header = ()=>{
+const Header = () => {
+
   const theme = useTheme();
   const [open, setOpen] = useState(false);
 
@@ -67,28 +64,161 @@ const Header = ()=>{
   const handleDrawerClose = () => {
     setOpen(false);
   };
-    return(
-        <Box>
-             <CssBaseline />
-      <AppBar position="fixed" open={open}>
-        <Toolbar>
-         
-            {/* Logo */}
-            <Box component='img' src={logo} 
-            />
+  return (
+    <Box sx={{ display: 'flex' }}>
+      <CssBaseline />
+      <AppBar position="fixed" open={open} color="transparent" sx={{
+        boxShadow: "none"
+      }}>
+        <Toolbar
+          sx={{
+
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            justifyContent: "space-between",
+            alignItems: "center",
+
+          }}
+
+        >
+
+          {/* Logo */}
+          <Box component='img' src={logo}
+          />
           <IconButton
-            color="inherit"
             aria-label="open drawer"
             edge="end"
             onClick={handleDrawerOpen}
-            sx={{ ...(open && { display: 'none' }) }}
+            sx={{
+              ...(open && { display: 'none' }),
+            }}
           >
-            <MenuIcon />
+            <MenuRounded htmlColor="var(--grayish-violet)" sx={{
+              display: {
+                lg: "none",
+                md: "none"
+              }
+            }} />
           </IconButton>
+
+          <List sx={{
+            display: {
+              sm: "none",
+              xs: "none",
+              lg: "flex",
+              md: "flex"
+            }, width: "100%",
+          }}>
+            <ListItem>
+              <ListItemButton>
+                <Typography>
+                  Features
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <Typography>
+                  Pricing
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <Typography>
+                  Resources
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <Typography>
+                  Login
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem>
+              <ListItemButton>
+                <Typography>
+                  Sign Up
+                </Typography>
+              </ListItemButton>
+            </ListItem>
+          </List>
+
         </Toolbar>
       </AppBar>
-        </Box>
-    )
+      <Drawer
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          '& .MuiDrawer-paper': {
+            width: drawerWidth,
+          },
+
+        }}
+        variant="persistent"
+        anchor="right"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === 'rtl' ? <ChevronLeftRounded /> : <ChevronRightRounded />}
+          </IconButton>
+        </DrawerHeader>
+        <Divider />
+        <List>
+          <ListItem>
+            <ListItemButton>
+              <Typography>
+                Features
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton>
+              <Typography>
+                Pricing
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton>
+              <Typography>
+                Resources
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton>
+              <Typography>
+                Login
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+
+          <ListItem>
+            <ListItemButton>
+              <Typography>
+                Sign Up
+              </Typography>
+            </ListItemButton>
+          </ListItem>
+        </List>
+
+      </Drawer>
+
+
+    </Box>
+  )
 }
 
 export default Header;
