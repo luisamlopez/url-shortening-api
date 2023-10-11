@@ -1,4 +1,5 @@
 import './App.css';
+import Footer from './components/Footer';
 import Header from './components/Header';
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         Coded by <a href="https://github.com/luisamlopez">Luisa López</a>.
 
       </div>
+      <Footer />
     </div>
   );
 }

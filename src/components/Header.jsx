@@ -7,25 +7,6 @@ import { ChevronLeftRounded, ChevronRightRounded, MenuRounded } from "@mui/icons
 
 const drawerWidth = 240;
 
-const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
-  ({ theme, open }) => ({
-    flexGrow: 1,
-    padding: theme.spacing(3),
-    transition: theme.transitions.create('margin', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    marginRight: -drawerWidth,
-    ...(open && {
-      transition: theme.transitions.create('margin', {
-        easing: theme.transitions.easing.easeOut,
-        duration: theme.transitions.duration.enteringScreen,
-      }),
-      marginRight: 0,
-    }),
-  }),
-);
-
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
 })(({ theme, open }) => ({
@@ -81,22 +62,27 @@ const Header = () => {
   }, []);
 
   const options = ["Features", "Pricing", "Resources"];
-  const userOptions = ["Login", "Sign Up"]
 
   return (
-    <Box sx={{ display: 'flex' }}>
+    <Box>
       <CssBaseline />
       <AppBar position="fixed" open={open} color="transparent" sx={{
-        boxShadow: "none"
+        boxShadow: "none",
       }}>
         <Toolbar
           sx={{
-
             display: "flex",
-            flexDirection: "row",
-            width: "100%",
             justifyContent: "space-between",
             alignItems: "center",
+            placeSelf: {
+              lg: "center",
+              md: "center",
+              sm: "normal",
+              xs: "normal"
+            },
+            width: "100%",
+            maxWidth: "1400px"
+
           }}
 
         >
@@ -172,7 +158,9 @@ const Header = () => {
               m: 0, p: 0, width: "fit-content",
             }}>
               <Button variant="contained" sx={{
-                textTransform: "none", margin: 0, boxShadow: 0,
+                textTransform: "none", margin: 0, boxShadow: 0, background: "var( --cyan)", borderRadius: 5, ":hover": {
+                  background: "var(--light-cyan)", boxShadow: 0
+                }
               }}>
                 Sign Up
               </Button>
