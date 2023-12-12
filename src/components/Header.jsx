@@ -119,9 +119,15 @@ const Header = () => {
               <ListItem key={i} sx={{
                 m: 0, p: 0, width: "fit-content"
               }}>
-                <ListItemButton sx={{ m: 0, p: 0, }}>
+                <ListItemButton sx={{
+                  m: 0, p: 0, ":hover": {
+                    background: "transparent", boxShadow: 0
+                  }
+                }} >
                   <Typography sx={{
-                    color: "var(--grayish-violet)", p: 0
+                    color: "var(--grayish-violet)", fontWeight: "600", p: 0, ":hover": {
+                      color: "var(--very-dark-blue)"
+                    }
                   }}>
                     {option}
                   </Typography>
@@ -145,10 +151,12 @@ const Header = () => {
           }}>
             <ListItem sx={{
               placeSelf: "flex-end",
-              m: 0, p: 0, width: "fit-content",
+              m: 0, p: 0, width: "fit-content"
             }}>
               <Button variant="text" sx={{
-                textTransform: "none", margin: 0, boxShadow: 0, color: "var(--grayish-violet)"
+                textTransform: "none", margin: 0, boxShadow: 0, fontWeight: "600", color: "var(--grayish-violet)", ":hover": {
+                  color: "var(--very-dark-blue)", background: "transparent", boxShadow: 0
+                }
               }}>
                 Login
               </Button>
@@ -194,7 +202,7 @@ const Header = () => {
         <List>
           <ListItem>
             <ListItemButton>
-              <Typography>
+              <Typography color={"var(--grayish-violet)"}>
                 Features
               </Typography>
             </ListItemButton>
@@ -202,7 +210,7 @@ const Header = () => {
 
           <ListItem>
             <ListItemButton>
-              <Typography>
+              <Typography color={"var(--grayish-violet)"}>
                 Pricing
               </Typography>
             </ListItemButton>
@@ -210,7 +218,7 @@ const Header = () => {
 
           <ListItem>
             <ListItemButton>
-              <Typography>
+              <Typography color={"var(--grayish-violet)"}>
                 Resources
               </Typography>
             </ListItemButton>
@@ -218,7 +226,7 @@ const Header = () => {
 
           <ListItem>
             <ListItemButton>
-              <Typography>
+              <Typography color={"var(--grayish-violet)"}>
                 Login
               </Typography>
             </ListItemButton>
@@ -226,7 +234,7 @@ const Header = () => {
 
           <ListItem>
             <ListItemButton>
-              <Typography>
+              <Typography color={"var(--grayish-violet)"}>
                 Sign Up
               </Typography>
             </ListItemButton>
@@ -236,7 +244,7 @@ const Header = () => {
       </Drawer>
 
 
-    </Box>
+    </Box >
   )
 }
 

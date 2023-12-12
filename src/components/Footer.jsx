@@ -60,7 +60,7 @@ const Footer = () => {
                         xs: "0",
                         sm: "0",
                         md: "4rem",
-                        lg: "8rem",
+                        lg: "20rem",
                     },
                 }}
             />
