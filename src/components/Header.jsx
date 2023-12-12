@@ -65,9 +65,9 @@ const Header = () => {
 
   return (
     <Box
-      maxWidth="1440px" >
+      mx="6rem" >
       <CssBaseline />
-      <AppBar position="fixed" open={open} color="transparent" sx={{
+      <AppBar position="sticky" open={open} color="transparent" sx={{
         boxShadow: "none",
       }}>
         <Toolbar
@@ -82,8 +82,6 @@ const Header = () => {
               xs: "normal"
             },
             width: "100%",
-            maxWidth: "1440px"
-
           }}
 
         >

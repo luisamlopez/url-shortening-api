@@ -22,7 +22,6 @@ const Footer = () => {
         <Box
             component="footer"
             sx={{
-                position: "fixed",
                 bottom: 0,
                 left: 0,
                 width: "100%",
@@ -32,9 +31,9 @@ const Footer = () => {
                 },
             }}
         >
-            <Container maxWidth="lg" sx={{
+            <Container sx={{
                 background: "var(--very-dark-violet)",
-                padding: "2rem",
+                padding: "2rem 0",
                 display: "flex",
                 flexDirection: {
                     xs: "column",
@@ -60,11 +59,9 @@ const Footer = () => {
                             xs: "0",
                             sm: "0",
                             md: "4rem",
-                            lg: "20rem",
+                            lg: "14rem",
                         },
                     }}
-                    height={50}
-                    width={200}
                 />
                 {/* Features */}
                 <FooterMenu array={features} title={"Features"} />
@@ -81,7 +78,11 @@ const Footer = () => {
                     }}
                 >
                     {socialMedia.map((social, i) => (
-                        <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff">
+                        <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff" sx={{
+                            ":hover": {
+                                color: "var(--cyan)",
+                            },
+                        }}>
                             {getSocialMediaIcon(social)}
                         </Link>
                     ))}
@@ -97,7 +98,7 @@ const FooterMenu = ({ title, array }) => (
         sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "1rem",
+            gap: "0.5rem",
             width: "100%",
             textAlign: {
                 xs: "center",
@@ -109,9 +110,14 @@ const FooterMenu = ({ title, array }) => (
     >
         <Typography sx={{ fontWeight: "bold", color: "white" }}>{title}</Typography>
         {array.map((item, i) => (
-            <Typography key={i} sx={{ color: "var(--grayish-violet)" }}>
+            <Link href={"#"} key={i} sx={{
+                color: "var(--grayish-violet)", textDecoration: "none",
+                ":hover": {
+                    color: "var(--cyan)",
+                },
+            }}>
                 {item}
-            </Typography>
+            </Link>
         ))}
     </Box>
 );

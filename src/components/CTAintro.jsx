@@ -1,8 +1,20 @@
 import { Box, Button, Typography } from "@mui/material";
+import illustration from "../assets/illustration-working.svg";
 
 const CTAintro = () => {
     return (
-        <Box>
+        <Box sx={{
+            display: "flex",
+            flexDirection: {
+                xs: "column-reverse",
+                sm: "column-reverse",
+                md: "row",
+                lg: "row",
+            },
+            justifyContent: "space-between",
+            alignItems: "center",
+            width: "100%",
+        }}>
             <Box sx={{
                 display: 'flex',
                 flexDirection: 'column',
@@ -15,9 +27,9 @@ const CTAintro = () => {
 
                 },
                 gap: 2,
-
+                mx: "2rem"
             }}>
-                <Typography variant="h1" fontWeight={600} sx={{
+                <Typography variant="h1" fontWeight={700} sx={{
                     textAlign: {
                         xs: "center",
                         sm: "center",
@@ -30,8 +42,9 @@ const CTAintro = () => {
                         md: "3rem",
                         lg: "4rem"
                     },
+                    color: "var(--very-dark-violet)"
                 }}>
-                    More than just shorter links
+                    More than just <br /> shorter links
                 </Typography>
                 <Typography variant="body1" color={"var(--grayish-violet)"} sx={{
                     textAlign: {
@@ -51,7 +64,27 @@ const CTAintro = () => {
                     Get Started
                 </Button>
             </Box>
-        </Box>
+
+            <Box
+                component="img" src={illustration}
+                height={{
+                    xs: "auto",
+                    sm: "auto",
+                    md: "auto",
+                    lg: "auto",
+
+
+                }}
+                width={{
+                    xs: "350px",
+                    sm: "350px",
+                    md: "350px",
+                    lg: "500px",
+                }}
+
+            /* Cut the image -10rem on the right  and hide the rest*/
+            />
+        </Box >
     )
 };
 

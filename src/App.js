@@ -7,19 +7,22 @@ function App() {
   return (
     <Box >
       <Header />
-      <Box sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: '100%',
-        maxWidth: {
-          xs: '375px',
-          sm: '375px',
-          md: '1440px',
-          lg: '1440px',
-        },
-        mt: '6rem',
-      }}>
+      <Box
+        variant="main"
+        sx={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          maxWidth: '90%',
+          mx: '6rem',
+          my: {
+            xs: '1rem',
+            sm: '1rem',
+            md: '3rem',
+            lg: '3rem',
+          },
+          border: '1px solid red',
+        }}>
         <CTAintro />
       </Box>
       <Footer />
