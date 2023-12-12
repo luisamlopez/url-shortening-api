@@ -14,23 +14,41 @@ const resources = ["Blog", "Developers", "Support"];
 // Company array
 const company = ["About", "Our Team", "Careers", "Contact"];
 // Social Media array
-const socialMedia = ["Facebook", "Twitter", "Instagram", "Pinterest"];
+const socialMedia = ["Facebook", "Twitter", "Pinterest", "Instagram"];
 
 const Footer = () => {
     return (
         <Box
             component="footer"
             sx={{
-                position: "fixed",
+                position: 'fixed',
                 bottom: 0,
                 left: 0,
                 right: 0,
                 background: "var(--very-dark-violet)",
                 display: "flex",
                 justifyContent: "space-between",
-                alignItems: "flex-start",
-                padding: "1rem 5rem",
+                alignItems: {
+                    xs: "center",
+                    sm: "center",
+                    md: "center",
+                    lg: "flex-start",
+                },
+                padding: {
+                    xs: "2rem 1rem",
+                    sm: "2rem 1rem",
+                    md: "2rem 2rem",
+                    lg: "2rem 4rem",
+                },
                 gap: "2rem",
+                flexDirection: {
+                    xs: "column",
+                    sm: "column",
+                    md: "row",
+                    lg: "row",
+                },
+                width: "100%",
+
             }}
         >
             {/* Logo */}
@@ -38,7 +56,12 @@ const Footer = () => {
                 component="img"
                 src={logo}
                 sx={{
-                    marginRight: "8rem",
+                    marginRight: {
+                        xs: "0",
+                        sm: "0",
+                        md: "4rem",
+                        lg: "8rem",
+                    },
                 }}
             />
             {/* Features */}
@@ -48,29 +71,20 @@ const Footer = () => {
             {/* Company */}
             <FooterMenu array={company} title={"Company"} />
             {/* Social Media */}
+
             <Box
                 sx={{
                     display: "flex",
-                    flexDirection: "column",
-                    gap: "1rem",
+                    flexDirection: 'row',  // fixed typo here
+                    gap: "0.5rem",
                 }}
             >
-                <Typography sx={{ fontWeight: "bold", color: "white" }}>
-                    Follow Us
-                </Typography>
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: 'row',  // fixed typo here
-                        gap: "0.5rem",
-                    }}
-                >
-                    {socialMedia.map((social, i) => (
-                        <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff">
-                            {getSocialMediaIcon(social)}
-                        </Link>
-                    ))}
-                </Box>
+                {socialMedia.map((social, i) => (
+                    <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff">
+                        {getSocialMediaIcon(social)}
+                    </Link>
+                ))}
+
             </Box>
         </Box>
     );
@@ -84,7 +98,12 @@ const FooterMenu = ({ title, array }) => (
             flexDirection: "column",
             gap: "1rem",
             width: "100%",
-            textAlign: "left",
+            textAlign: {
+                xs: "center",
+                sm: "center",
+                md: "left",
+                lg: "left",
+            },
         }}
     >
         <Typography sx={{ fontWeight: "bold", color: "white" }}>{title}</Typography>
