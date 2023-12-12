@@ -1,4 +1,4 @@
-import { Box, Link, Typography } from "@mui/material";
+import { Box, Container, Link, Typography, useTheme } from "@mui/material";
 import logo from "../assets/footer-logo.svg";
 import {
     FacebookRounded,
@@ -17,75 +17,76 @@ const company = ["About", "Our Team", "Careers", "Contact"];
 const socialMedia = ["Facebook", "Twitter", "Pinterest", "Instagram"];
 
 const Footer = () => {
+    const theme = useTheme(); // Access the theme for responsive styling
     return (
         <Box
             component="footer"
             sx={{
-                position: 'fixed',
+                position: "fixed",
                 bottom: 0,
                 left: 0,
-                right: 0,
+                width: "100%",
                 background: "var(--very-dark-violet)",
+                [theme.breakpoints.down('sm')]: {
+                    position: "relative",
+                },
+            }}
+        >
+            <Container maxWidth="lg" sx={{
+                background: "var(--very-dark-violet)",
+                padding: "2rem",
                 display: "flex",
-                justifyContent: "space-between",
-                alignItems: {
-                    xs: "center",
-                    sm: "center",
-                    md: "center",
-                    lg: "flex-start",
-                },
-                padding: {
-                    xs: "2rem 1rem",
-                    sm: "2rem 1rem",
-                    md: "2rem 2rem",
-                    lg: "2rem 4rem",
-                },
-                gap: "2rem",
                 flexDirection: {
                     xs: "column",
                     sm: "column",
                     md: "row",
                     lg: "row",
                 },
+                alignItems: {
+                    xs: "center",
+                    sm: "center",
+                    md: "center",
+                    lg: "flex-start",
+                },
+                gap: "2rem",
                 width: "100%",
-
-            }}
-        >
-            {/* Logo */}
-            <Box
-                component="img"
-                src={logo}
-                sx={{
-                    marginRight: {
-                        xs: "0",
-                        sm: "0",
-                        md: "4rem",
-                        lg: "20rem",
-                    },
-                }}
-            />
-            {/* Features */}
-            <FooterMenu array={features} title={"Features"} />
-            {/* Resources */}
-            <FooterMenu array={resources} title={"Resources"} />
-            {/* Company */}
-            <FooterMenu array={company} title={"Company"} />
-            {/* Social Media */}
-
-            <Box
-                sx={{
-                    display: "flex",
-                    flexDirection: 'row',  // fixed typo here
-                    gap: "0.5rem",
-                }}
-            >
-                {socialMedia.map((social, i) => (
-                    <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff">
-                        {getSocialMediaIcon(social)}
-                    </Link>
-                ))}
-
-            </Box>
+            }}>
+                {/* Logo */}
+                <Box
+                    component="img"
+                    src={logo}
+                    sx={{
+                        marginRight: {
+                            xs: "0",
+                            sm: "0",
+                            md: "4rem",
+                            lg: "20rem",
+                        },
+                    }}
+                    height={50}
+                    width={200}
+                />
+                {/* Features */}
+                <FooterMenu array={features} title={"Features"} />
+                {/* Resources */}
+                <FooterMenu array={resources} title={"Resources"} />
+                {/* Company */}
+                <FooterMenu array={company} title={"Company"} />
+                {/* Social Media */}
+                <Box
+                    sx={{
+                        display: "flex",
+                        flexDirection: 'row',
+                        gap: "0.5rem",
+                    }}
+                >
+                    {socialMedia.map((social, i) => (
+                        <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff">
+                            {getSocialMediaIcon(social)}
+                        </Link>
+                    ))}
+                </Box>
+            </Container>
         </Box>
     );
 };
