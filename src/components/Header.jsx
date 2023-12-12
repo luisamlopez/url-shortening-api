@@ -64,7 +64,8 @@ const Header = () => {
   const options = ["Features", "Pricing", "Resources"];
 
   return (
-    <Box>
+    <Box
+      maxWidth="1440px" >
       <CssBaseline />
       <AppBar position="fixed" open={open} color="transparent" sx={{
         boxShadow: "none",
@@ -81,7 +82,7 @@ const Header = () => {
               xs: "normal"
             },
             width: "100%",
-            maxWidth: "1400px"
+            maxWidth: "1440px"
 
           }}
 

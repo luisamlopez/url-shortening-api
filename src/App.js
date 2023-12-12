@@ -1,16 +1,11 @@
-import './App.css';
+import { Box } from '@mui/material';
 import Footer from './components/Footer';
 import Header from './components/Header';
 
 function App() {
   return (
-    <div className="App">
+    <div >
       <Header />
-      <div className='attribution'>
-        <p> Challenge by Frontend Mentor. </p>
-        Coded by <a href="https://github.com/luisamlopez">Luisa López</a>.
-
-      </div>
       <Footer />
     </div>
   );
