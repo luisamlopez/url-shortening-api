@@ -19,75 +19,67 @@ const socialMedia = ["Facebook", "Twitter", "Pinterest", "Instagram"];
 const Footer = () => {
     const theme = useTheme(); // Access the theme for responsive styling
     return (
-        <Box
-            component="footer"
-            sx={{
-                bottom: 0,
-                left: 0,
-                width: "100%",
-                background: "var(--very-dark-violet)",
-                [theme.breakpoints.down('sm')]: {
-                    position: "relative",
-                },
-            }}
-        >
-            <Container sx={{
-                background: "var(--very-dark-violet)",
-                padding: "2rem 0",
-                display: "flex",
-                flexDirection: {
-                    xs: "column",
-                    sm: "column",
-                    md: "row",
-                    lg: "row",
-                },
-                alignItems: {
-                    xs: "center",
-                    sm: "center",
-                    md: "center",
-                    lg: "flex-start",
-                },
-                gap: "2rem",
-                width: "100%",
-            }}>
-                {/* Logo */}
-                <Box
-                    component="img"
-                    src={logo}
-                    sx={{
-                        marginRight: {
-                            xs: "0",
-                            sm: "0",
-                            md: "4rem",
-                            lg: "14rem",
+        <Box sx={{
+            background: "var(--very-dark-violet)",
+            py: "2rem",
+            px: {
+                xs: '1rem',
+                sm: '1rem',
+                md: '4rem',
+                lg: '6rem',
+            },
+            display: "flex",
+            flexDirection: {
+                xs: "column",
+                sm: "row",
+                md: "row",
+                lg: "row",
+            },
+            alignItems: {
+                xs: "center",
+                sm: "flex-start",
+                md: "flex-start",
+                lg: "flex-start",
+            },
+            gap: "2rem",
+        }}>
+            {/* Logo */}
+            <Box
+                component="img"
+                src={logo}
+                sx={{
+                    marginRight: {
+                        xs: "0",
+                        sm: "0",
+                        md: "4rem",
+                        lg: "14rem",
+                    },
+                }}
+            />
+            {/* Features */}
+            <FooterMenu array={features} title={"Features"} />
+            {/* Resources */}
+            <FooterMenu array={resources} title={"Resources"} />
+            {/* Company */}
+            <FooterMenu array={company} title={"Company"} />
+            {/* Social Media */}
+            <Box
+                sx={{
+                    display: "flex",
+                    flexDirection: 'row',
+                    gap: "0.5rem",
+                }}
+            >
+                {socialMedia.map((social, i) => (
+                    <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff" sx={{
+                        ":hover": {
+                            color: "var(--cyan)",
                         },
-                    }}
-                />
-                {/* Features */}
-                <FooterMenu array={features} title={"Features"} />
-                {/* Resources */}
-                <FooterMenu array={resources} title={"Resources"} />
-                {/* Company */}
-                <FooterMenu array={company} title={"Company"} />
-                {/* Social Media */}
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexDirection: 'row',
-                        gap: "0.5rem",
-                    }}
-                >
-                    {socialMedia.map((social, i) => (
-                        <Link key={i} href={`https://www.${social.toLowerCase()}.com/`} color="#ffffff" sx={{
-                            ":hover": {
-                                color: "var(--cyan)",
-                            },
-                        }}>
-                            {getSocialMediaIcon(social)}
-                        </Link>
-                    ))}
-                </Box>
-            </Container>
+                    }}>
+                        {getSocialMediaIcon(social)}
+                    </Link>
+                ))}
+            </Box>
         </Box>
     );
 };
@@ -102,7 +94,7 @@ const FooterMenu = ({ title, array }) => (
             width: "100%",
             textAlign: {
                 xs: "center",
-                sm: "center",
+                sm: "left",
                 md: "left",
                 lg: "left",
             },

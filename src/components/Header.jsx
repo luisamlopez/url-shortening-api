@@ -1,4 +1,4 @@
-import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, Toolbar, List, ListItem, ListItemButton, ListItemIcon, Button } from "@mui/material"
+import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, List, ListItem, ListItemButton, Button } from "@mui/material"
 import { styled, useTheme } from '@mui/material/styles';
 import logo from "../assets/logo.svg"
 import { useEffect, useState } from "react";
@@ -64,13 +64,20 @@ const Header = () => {
   const options = ["Features", "Pricing", "Resources"];
 
   return (
-    <Box
-      mx="6rem" >
+    <Box sx={{
+      px: {
+        xs: '1rem',
+        sm: '1rem',
+        md: '4rem',
+        lg: '6rem',
+      },
+      width: "100%",
+    }}>
       <CssBaseline />
       <AppBar position="sticky" open={open} color="transparent" sx={{
         boxShadow: "none",
       }}>
-        <Toolbar
+        <Box
           sx={{
             display: "flex",
             justifyContent: "space-between",
@@ -83,7 +90,7 @@ const Header = () => {
             },
             width: "100%",
           }}
-
+          p={"1rem 0"}
         >
           {/* Logo */}
           <Box component='img' src={logo} />
@@ -166,7 +173,7 @@ const Header = () => {
             }}>
               <Button variant="contained" sx={{
                 textTransform: "none", margin: 0, boxShadow: 0, background: "var( --cyan)", borderRadius: 5, ":hover": {
-                  background: "var(--light-cyan)", boxShadow: 0
+                  background: "var(--light-cyan)", boxShadow: 0,
                 }
               }}>
                 Sign Up
@@ -174,7 +181,7 @@ const Header = () => {
             </ListItem>
           </List>
 
-        </Toolbar>
+        </Box>
       </AppBar>
 
       {/* Mobile drawer */}

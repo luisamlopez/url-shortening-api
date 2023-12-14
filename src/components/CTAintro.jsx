@@ -27,7 +27,6 @@ const CTAintro = () => {
 
                 },
                 gap: 2,
-                mx: "2rem"
             }}>
                 <Typography variant="h1" fontWeight={700} sx={{
                     textAlign: {

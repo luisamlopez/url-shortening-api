@@ -13,13 +13,17 @@ function App() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          maxWidth: '90%',
-          mx: '6rem',
+          maxWidth: '100%',
+          mx: {
+            xs: '0.5rem',
+            sm: '0.5rem',
+            lg: '6rem',
+          },
           my: {
-            xs: '1rem',
-            sm: '1rem',
-            md: '3rem',
-            lg: '3rem',
+            xs: '0.5rem',
+            sm: '0.5rem',
+            md: '2rem',
+            lg: '2rem',
           },
           border: '1px solid red',
         }}>
