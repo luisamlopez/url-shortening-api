@@ -7,7 +7,7 @@ const CTAintro = () => {
             display: "flex",
             flexDirection: {
                 xs: "column-reverse",
-                sm: "column-reverse",
+                sm: "row",
                 md: "row",
                 lg: "row",
             },
@@ -36,12 +36,13 @@ const CTAintro = () => {
                         lg: "left"
                     },
                     fontSize: {
-                        xs: "2rem",
-                        sm: "2rem",
+                        xs: "3rem",
+                        sm: "3rem",
                         md: "3rem",
-                        lg: "4rem"
+                        lg: "6rem"
                     },
                     color: "var(--very-dark-violet)"
+
                 }}>
                     More than just <br /> shorter links
                 </Typography>
@@ -65,23 +66,16 @@ const CTAintro = () => {
             </Box>
 
             <Box
-                component="img" src={illustration}
-                height={{
-                    xs: "auto",
-                    sm: "auto",
-                    md: "auto",
-                    lg: "auto",
-
-
-                }}
+                component="img" src={illustration} alt="illustration"
                 width={{
-                    xs: "350px",
-                    sm: "350px",
-                    md: "350px",
-                    lg: "500px",
+                    xs: "380px",
+                    sm: "380px",
+                    md: "500px",
+                    lg: "600px",
                 }}
 
-            /* Cut the image -10rem on the right  and hide the rest*/
+                mb={"2rem"}
+
             />
         </Box >
     )
