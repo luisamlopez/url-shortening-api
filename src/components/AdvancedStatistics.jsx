@@ -1,4 +1,4 @@
-import { Avatar, Box, Card, CardContent, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Statistic from "./Statistic";
 import brand from "../assets/icon-brand-recognition.svg";
 import detailed from "../assets/icon-detailed-records.svg";

@@ -1,9 +1,10 @@
-import { Box, CssBaseline, IconButton, Typography, Divider, Drawer, List, ListItem, ListItemButton, Button } from "@mui/material"
+import { Box, CssBaseline, IconButton, Typography, List, ListItem, ListItemButton, Button } from "@mui/material"
 import { styled, useTheme } from '@mui/material/styles';
 import logo from "../assets/logo.svg"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import MuiAppBar from '@mui/material/AppBar';
-import { ChevronLeftRounded, ChevronRightRounded, MenuRounded } from "@mui/icons-material";
+import { MenuRounded } from "@mui/icons-material";
+import MobileMenu from "./MobileMenu";
 
 const drawerWidth = 240;
 
@@ -14,52 +15,23 @@ const AppBar = styled(MuiAppBar, {
     easing: theme.transitions.easing.sharp,
     duration: theme.transitions.duration.leavingScreen,
   }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    transition: theme.transitions.create(['margin', 'width'], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-    marginRight: drawerWidth,
-  }),
+
 }));
 
-const DrawerHeader = styled('div')(({ theme }) => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: 'flex-start',
-}));
 
 const Header = () => {
 
   const theme = useTheme();
   const [open, setOpen] = useState(false);
-  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
-  const handleDrawerOpen = () => {
+  const handleOpenModal = () => {
     setOpen(true);
   };
 
-  const handleDrawerClose = () => {
+  const handleCloseModal = () => {
     setOpen(false);
   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setWindowWidth(window.innerWidth);
-    };
-
-    // Add event listener for window resize
-    window.addEventListener("resize", handleResize);
-
-    // Clean up event listener on unmount
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   const options = ["Features", "Pricing", "Resources"];
 
@@ -95,19 +67,16 @@ const Header = () => {
           {/* Logo */}
           <Box component='img' src={logo} />
           <IconButton
-            aria-label="open drawer"
             edge="end"
-            onClick={handleDrawerOpen}
+            onClick={handleOpenModal}
             sx={{
-              ...(open && windowWidth < 768 && { display: 'none' }),
-            }}
-          >
-            <MenuRounded htmlColor="var(--grayish-violet)" sx={{
               display: {
                 lg: "none",
-                md: "none"
+
               }
-            }} />
+            }}
+          >
+            <MenuRounded htmlColor="var(--grayish-violet)" />
           </IconButton>
 
           <List sx={{
@@ -185,7 +154,7 @@ const Header = () => {
       </AppBar>
 
       {/* Mobile drawer */}
-      <Drawer
+      {/* <Drawer
         sx={{
           width: drawerWidth,
           flexShrink: 0,
@@ -198,12 +167,6 @@ const Header = () => {
         anchor="right"
         open={open}
       >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === 'rtl' ? <ChevronLeftRounded /> : <ChevronRightRounded />}
-          </IconButton>
-        </DrawerHeader>
-        <Divider />
         <List>
           <ListItem>
             <ListItemButton>
@@ -246,9 +209,11 @@ const Header = () => {
           </ListItem>
         </List>
 
-      </Drawer>
+      </Drawer> */}
 
-
+      <MobileMenu
+        isOpen={open}
+        closeDialog={handleCloseModal} />
     </Box >
   )
 }
