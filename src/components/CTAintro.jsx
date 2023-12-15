@@ -28,7 +28,7 @@ const CTAintro = () => {
                 },
                 gap: 2,
             }}>
-                <Typography variant="h1" fontWeight={700} sx={{
+                <Typography variant="h1" fontWeight={900} sx={{
                     textAlign: {
                         xs: "center",
                         sm: "center",
@@ -41,7 +41,7 @@ const CTAintro = () => {
                         md: "3rem",
                         lg: "6rem"
                     },
-                    color: "var(--very-dark-violet)"
+                    color: "var(--very-dark-blue)", lineHeight: "3rem", letterSpacing: "-0.2rem", width: "80%"
 
                 }}>
                     More than just <br /> shorter links
@@ -52,14 +52,15 @@ const CTAintro = () => {
                         sm: "center",
                         md: "left",
                         lg: "left"
-                    }
+                    }, fontWeight: 400, fontSize: "1.2rem", lineHeight: "2rem", width: "80%"
+
                 }}>
                     Build your brand's recognition and get detailed insights on how your links are performing.
                 </Typography>
                 <Button variant="contained" sx={{
                     textTransform: "none", margin: 0, boxShadow: 0, background: "var( --cyan)", borderRadius: 5, ":hover": {
                         background: "var(--light-cyan)", boxShadow: 0
-                    }
+                    }, width: "150px", fontWeight: 700
                 }}>
                     Get Started
                 </Button>

@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import CTAintro from './components/CTAintro';
+import LinkForm from './components/LinkForm';
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
         variant="main"
         sx={{
           display: 'flex',
+          flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
           maxWidth: '100%',
@@ -28,6 +30,7 @@ function App() {
           border: '1px solid red',
         }}>
         <CTAintro />
+        <LinkForm />
       </Box>
       <Footer />
     </Box>
