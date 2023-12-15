@@ -3,6 +3,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import CTAintro from './components/CTAintro';
 import LinkForm from './components/LinkForm';
+import AdvancedStatistics from './components/AdvancedStatistics';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         }}>
         <CTAintro />
         <LinkForm />
+        <AdvancedStatistics />
       </Box>
       <Footer />
     </Box>
