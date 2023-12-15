@@ -31,6 +31,9 @@ const LinkForm = () => {
         try {
             const myHeaders = new Headers();
             myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+            myHeaders.append("Accept", "application/json");
+            //CORS
+            myHeaders.append("Access-Control-Allow-Origin", "*");
 
             const requestOptions = {
                 method: 'POST',
