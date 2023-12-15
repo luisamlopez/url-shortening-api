@@ -49,8 +49,6 @@ const LinkForm = () => {
 
             console.log(result);
             console.log(result.result_url);
-            const responseText = await response.text();
-            console.log('Response Text:', responseText);
 
             // Check if the result contains the expected property (result_url)
             if (!result || !result.result_url) {
