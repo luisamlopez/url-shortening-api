@@ -9,9 +9,9 @@ import LinksHolder from "./LinksHolder";
 const LinkForm = () => {
 
     const [links, setLinks] = useState([]);
-    //Get links from storagelocal
+    //Get links from storagesession
     useEffect(() => {
-        const linksFromStorage = JSON.parse(localStorage.getItem("links"));
+        const linksFromStorage = JSON.parse(sessionStorage.getItem("links"));
         if (linksFromStorage) {
             setLinks(linksFromStorage);
         }
@@ -74,16 +74,17 @@ const LinkForm = () => {
                 placeholder="Shorten a link here..."
                 sx={{
                     height: "55px",
-                    borderRadius: "10px",
+                    borderRadius: "12px",
                     fontSize: "1.2rem",
                     fontWeight: "700",
                     backgroundColor: "#fff",
                     "& .MuiOutlinedInput-root": {
                         "& fieldset": {
-                            borderRadius: "10px",
+                            borderRadius: "12px",
                         },
                         "&.Mui-focused fieldset": {
                             borderColor: "var(--cyan)",
+                            borderRadius: "12px",
                         },
                         "&.Mui-error fieldset": {
                             borderColor: "var(--red)",

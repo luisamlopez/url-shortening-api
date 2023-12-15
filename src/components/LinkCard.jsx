@@ -1,6 +1,16 @@
 import { Box, Button, Typography } from "@mui/material";
+import { useState } from "react";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 const LinkCard = ({ original, short }) => {
+    const [isCopied, setIsCopied] = useState(false);
+
+    const handleCopy = () => {
+        setIsCopied(true);
+        setTimeout(() => {
+            setIsCopied(false);
+        }, 5000);
+    };
     return (
         <Box
             sx={{
@@ -80,20 +90,22 @@ const LinkCard = ({ original, short }) => {
                     {short}
                 </Typography>
 
-                <Button variant="contained" sx={{
-                    textTransform: "none", margin: 0, boxShadow: 0, background: "var( --cyan)", ":hover": {
-                        background: "var(--light-cyan)", boxShadow: 0,
-                    },
-                    width: {
-                        xs: "100%",
-                        sm: "250px",
-                    },
-                    fontSize: "1.2rem",
-                    borderRadius: "10px",
-                    fontWeight: "700",
-                }}>
-                    Copy
-                </Button>
+                <CopyToClipboard text={short} onCopy={handleCopy}>
+                    <Button variant="contained" sx={{
+                        textTransform: "none", margin: 0, boxShadow: 0, background: isCopied ? "var(--very-dark-violet)" : "var(--cyan)", ":hover": {
+                            background: "var(--light-cyan)", boxShadow: 0,
+                        },
+                        width: {
+                            xs: "100%",
+                            sm: "250px",
+                        },
+                        fontSize: "1.2rem",
+                        borderRadius: "10px",
+                        fontWeight: "700",
+                    }}>
+                        {isCopied ? "Copied!" : "Copy"}
+                    </Button>
+                </CopyToClipboard>
             </Box>
         </Box>
     )
