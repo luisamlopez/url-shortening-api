@@ -9,9 +9,9 @@ import LinksHolder from "./LinksHolder";
 const LinkForm = () => {
 
     const [links, setLinks] = useState([]);
-    //Get links from storagesession
+    //Get links from storagelocal
     useEffect(() => {
-        const linksFromStorage = JSON.parse(sessionStorage.getItem("links"));
+        const linksFromStorage = JSON.parse(localStorage.getItem("links"));
         if (linksFromStorage) {
             setLinks(linksFromStorage);
         }
@@ -30,32 +30,33 @@ const LinkForm = () => {
     const handleSubmit = async (values) => {
         try {
             const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-
-            const urlencoded = new URLSearchParams();
-            urlencoded.append("url", values.link);
+            myHeaders.append("Content-Type", "application/json"); // Update the content type
 
             const requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
-                body: urlencoded,
+                body: JSON.stringify({ url: values.link }), // Use JSON.stringify for the body
                 redirect: 'follow',
             };
 
-            const response = await fetch("https://cleanuri.com/api/v1/shorten", requestOptions);
-            if (!response.ok) { throw new Error('Network response was not ok') } else {
-
+            const response = await fetch(process.env.REACT_APP_UR, requestOptions); // Update the URL
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            } else {
                 const result = await response.json();
-                //Push the new link to the links array
+                // Push the new link to the links array
                 setLinks([...links, { original: values.link, short: result.result_url }]);
+                // update the local storage
+                localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
 
-                //Clean the form
+                // Clean the form
                 values.link = "";
             }
         } catch (error) {
             console.error('Error:', error);
         }
     };
+
 
     const MyField = () => {
         // handle the form state using the useFormikContext hook from Formik. This hook gives you access to the Formik context and allows you to directly interact with the form state.
@@ -84,7 +85,7 @@ const LinkForm = () => {
                         },
                         "&.Mui-focused fieldset": {
                             borderColor: "var(--cyan)",
-                            borderRadius: "12px",
+                            borderRadius: "14px",
                         },
                         "&.Mui-error fieldset": {
                             borderColor: "var(--red)",

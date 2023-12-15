@@ -1,12 +1,11 @@
 import { Box, CssBaseline, IconButton, Typography, List, ListItem, ListItemButton, Button } from "@mui/material"
-import { styled, useTheme } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import logo from "../assets/logo.svg"
 import { useState } from "react";
 import MuiAppBar from '@mui/material/AppBar';
 import { MenuRounded } from "@mui/icons-material";
 import MobileMenu from "./MobileMenu";
 
-const drawerWidth = 240;
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== 'open',
@@ -21,7 +20,6 @@ const AppBar = styled(MuiAppBar, {
 
 const Header = () => {
 
-  const theme = useTheme();
   const [open, setOpen] = useState(false);
 
   const handleOpenModal = () => {
@@ -154,62 +152,6 @@ const Header = () => {
       </AppBar>
 
       {/* Mobile drawer */}
-      {/* <Drawer
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          '& .MuiDrawer-paper': {
-            width: drawerWidth,
-          },
-
-        }}
-        variant="persistent"
-        anchor="right"
-        open={open}
-      >
-        <List>
-          <ListItem>
-            <ListItemButton>
-              <Typography color={"var(--grayish-violet)"}>
-                Features
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <Typography color={"var(--grayish-violet)"}>
-                Pricing
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <Typography color={"var(--grayish-violet)"}>
-                Resources
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <Typography color={"var(--grayish-violet)"}>
-                Login
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-
-          <ListItem>
-            <ListItemButton>
-              <Typography color={"var(--grayish-violet)"}>
-                Sign Up
-              </Typography>
-            </ListItemButton>
-          </ListItem>
-        </List>
-
-      </Drawer> */}
 
       <MobileMenu
         isOpen={open}
