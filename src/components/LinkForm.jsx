@@ -47,7 +47,7 @@ const LinkForm = () => {
             };
 
 
-            const response = await fetch("http://localhost:3001", requestOptions);
+            const response = await fetch(process.env.REACT_APP_URL, requestOptions);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
