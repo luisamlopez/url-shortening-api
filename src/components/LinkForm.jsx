@@ -53,7 +53,16 @@ const LinkForm = () => {
                 throw new Error('Network response was not ok');
             }
 
-            const result = await response.json();
+            const responseText = await response.text();
+            console.log('Response Text:', responseText);
+
+            if (!responseText) {
+                throw new Error('Empty response from the server');
+            }
+
+            const result = JSON.parse(responseText);
+
+
 
             console.log(result);
             console.log(result.result_url);
