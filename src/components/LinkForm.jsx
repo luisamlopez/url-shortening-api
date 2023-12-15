@@ -27,27 +27,78 @@ const LinkForm = () => {
         link: yup.string().required("Please add a link").url("Please provide a valid link"),
     });
 
+    // const handleSubmit = async (values) => {
+    //     try {
+    //         const myHeaders = new Headers();
+    //         myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
+    //         myHeaders.append("Accept", "application/json");
+    //         //CORS
+    //         myHeaders.append("Access-Control-Allow-Origin", "*");
+
+    //         const requestOptions = {
+    //             method: 'POST',
+    //             headers: {
+    //                 'Content-Type': 'application/x-www-form-urlencoded',
+    //                 'Access-Control-Allow-Origin': '*',
+
+    //             },
+    //             body: new URLSearchParams({ url: values.link }), // Use URLSearchParams for form data
+    //             redirect: 'follow',
+    //         };
+
+
+    //         const response = await fetch(process.env.REACT_APP_URL, requestOptions);
+
+    //         if (!response.ok) {
+    //             throw new Error('Network response was not ok');
+    //         }
+
+    //         const responseText = await response.text();
+    //         console.log('Response Text:', responseText);
+
+    //         if (!responseText) {
+    //             throw new Error('Empty response from the server');
+    //         }
+
+    //         const result = JSON.parse(responseText);
+
+
+
+    //         console.log(result);
+    //         console.log(result.result_url);
+
+    //         // Check if the result contains the expected property (result_url)
+    //         if (!result || !result.result_url) {
+    //             throw new Error('Invalid server response format');
+    //         }
+
+    //         // Push the new link to the links array
+    //         setLinks([...links, { original: values.link, short: result.result_url }]);
+    //         // update the local storage
+    //         localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
+
+    //         // Clean the form
+    //         values.link = "";
+    //     } catch (error) {
+    //         console.error('Error:', error.message); // Log the error message
+    //     }
+    // };
+
     const handleSubmit = async (values) => {
         try {
-            const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/x-www-form-urlencoded");
-            myHeaders.append("Accept", "application/json");
-            //CORS
-            myHeaders.append("Access-Control-Allow-Origin", "*");
-
             const requestOptions = {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded',
                     'Access-Control-Allow-Origin': '*',
-
                 },
-                body: new URLSearchParams({ url: values.link }), // Use URLSearchParams for form data
-                redirect: 'follow',
+                form: {
+                    'url': values.link
+                },
             };
 
 
-            const response = await fetch(process.env.REACT_APP_URL, requestOptions);
+            const response = await fetch("https://cleanuri.com/api/v1/shorten", requestOptions);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -64,26 +115,25 @@ const LinkForm = () => {
 
 
 
-            console.log(result);
-            console.log(result.result_url);
-
             // Check if the result contains the expected property (result_url)
             if (!result || !result.result_url) {
-                throw new Error('Invalid server response format');
+                throw new Error(response);
+            } else {
+                console.log(result);
+                console.log(result.result_url);
+                // Push the new link to the links array
+                setLinks([...links, { original: values.link, short: result.result_url }]);
+                // update the local storage
+                localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
+                // Clean the form
+                values.link = "";
             }
 
-            // Push the new link to the links array
-            setLinks([...links, { original: values.link, short: result.result_url }]);
-            // update the local storage
-            localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
 
-            // Clean the form
-            values.link = "";
         } catch (error) {
-            console.error('Error:', error.message); // Log the error message
+            console.log(error)
         }
-    };
-
+    }
 
     const MyField = () => {
         // handle the form state using the useFormikContext hook from Formik. This hook gives you access to the Formik context and allows you to directly interact with the form state.
