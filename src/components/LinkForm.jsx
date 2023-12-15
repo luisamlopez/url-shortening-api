@@ -35,9 +35,10 @@ const LinkForm = () => {
             const requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
-                body: JSON.stringify({ url: values.link }),
+                body: new URLSearchParams({ url: values.link }), // Use URLSearchParams for form data
                 redirect: 'follow',
             };
+
 
             const response = await fetch("https://luisamlopez-url-shortener-api.onrender.com", requestOptions);
 
