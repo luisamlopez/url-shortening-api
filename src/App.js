@@ -4,6 +4,7 @@ import Header from './components/Header';
 import CTAintro from './components/CTAintro';
 import LinkForm from './components/LinkForm';
 import AdvancedStatistics from './components/AdvancedStatistics';
+import Boost from './components/Boost';
 
 function App() {
   return (
@@ -16,18 +17,16 @@ function App() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          my: {
+          mt: {
             xs: '0.5rem',
             sm: '0.5rem',
-            md: '2rem',
-            lg: '2rem',
           },
-          border: '1px solid red',
         }}>
         <CTAintro />
         <LinkForm />
         <AdvancedStatistics />
       </Box>
+      <Boost />
       <Footer />
     </Box>
   );

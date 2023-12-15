@@ -1,4 +1,4 @@
-import { Box, Container, Link, Typography, useTheme } from "@mui/material";
+import { Box, Link, Typography } from "@mui/material";
 import logo from "../assets/footer-logo.svg";
 import {
     FacebookRounded,
@@ -17,7 +17,6 @@ const company = ["About", "Our Team", "Careers", "Contact"];
 const socialMedia = ["Facebook", "Twitter", "Pinterest", "Instagram"];
 
 const Footer = () => {
-    const theme = useTheme(); // Access the theme for responsive styling
     return (
         <Box sx={{
             background: "var(--very-dark-violet)",

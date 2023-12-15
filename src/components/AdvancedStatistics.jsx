@@ -42,7 +42,16 @@ const AdvancedStatistics = () => {
                 Advanced Statistics
             </Typography>
 
-            <Typography lineHeight={"1.8rem"} mb={"4rem"}>
+            <Typography lineHeight={"1.8rem"} sx={{
+                mb: {
+                    xs: "2rem",
+                    md: "4rem",
+                },
+                width: {
+                    xs: "90%",
+                    md: "40%",
+                },
+            }}>
                 Track how your links are performing across the web with our advanced statistics dashboard.
             </Typography>
 
