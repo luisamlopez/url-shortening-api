@@ -37,7 +37,11 @@ const LinkForm = () => {
 
             const requestOptions = {
                 method: 'POST',
-                headers: myHeaders,
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Access-Control-Allow-Origin': '*',
+
+                },
                 body: new URLSearchParams({ url: values.link }), // Use URLSearchParams for form data
                 redirect: 'follow',
             };
