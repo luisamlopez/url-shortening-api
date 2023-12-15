@@ -108,10 +108,11 @@ const LinkForm = () => {
                 display: "flex",
                 flexDirection: "column",
                 px: {
-                    xs: '0.5rem',
-                    sm: '4rem',
+                    xs: '1rem',
+                    sm: '1rem',
                     lg: '6rem',
                 },
+
                 justifyContent: "space-between",
                 alignItems: "center",
                 width: "100%",

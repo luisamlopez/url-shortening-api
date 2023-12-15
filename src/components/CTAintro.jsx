@@ -11,11 +11,10 @@ const CTAintro = () => {
                 lg: "row",
             },
             px: {
-                xs: '0.5rem',
-                sm: '4rem',
+                xs: '1rem',
+                sm: '1rem',
                 lg: '6rem',
             },
-
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
@@ -82,9 +81,9 @@ const CTAintro = () => {
             <Box
                 component="img" src={illustration} alt="illustration"
                 width={{
-                    xs: "380px",
-                    sm: "380px",
-                    md: "500px",
+                    xs: "370px",
+                    sm: "370px",
+                    md: "450px",
                     lg: "600px",
                 }}
 

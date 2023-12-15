@@ -4,8 +4,12 @@ const Statistic = ({ title, content, type }) => {
     return (
 
         <Card sx={{
-            width: "340px",
-            height: "300px",
+            width: {
+                xs: "100%",
+                sm: "100%",
+                md: "360px",
+            },
+            height: "260px",
             borderRadius: "10px",
             display: "flex",
             flexDirection: "column",
@@ -17,14 +21,13 @@ const Statistic = ({ title, content, type }) => {
             textAlign: {
                 xs: "center",
                 sm: "left",
-
             },
         }}>
 
             <CardContent>
                 <Typography
                     sx={{
-                        mt: "4rem",
+                        mt: "3rem",
                         color: "var(--dark-violet)",
                         fontWeight: "bold",
                         mb: "1rem",

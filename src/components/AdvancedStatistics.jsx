@@ -27,7 +27,7 @@ const AdvancedStatistics = () => {
             flexDirection: "column",
             px: {
                 xs: '1rem',
-                sm: '4rem',
+                sm: '1rem',
                 lg: '6rem',
             },
 
@@ -42,16 +42,16 @@ const AdvancedStatistics = () => {
                 Advanced Statistics
             </Typography>
 
-            <Typography lineHeight={"1.8rem"}>
+            <Typography lineHeight={"1.8rem"} mb={"4rem"}>
                 Track how your links are performing across the web with our advanced statistics dashboard.
             </Typography>
 
             <Box sx={{
-
                 display: "flex",
                 flexDirection: {
                     xs: "column",
-                    sm: "row",
+                    sm: "column",
+                    md: "row",
                 },
                 justifyContent: "center",
                 alignItems: "center",
@@ -61,12 +61,19 @@ const AdvancedStatistics = () => {
 
                 {content.map((item, index) => (
                     <Box key={index} sx={{
-                        position: "relative", display: "flex", flexDirection: {
+                        position: "relative",
+                        display: "flex",
+                        flexDirection: {
                             xs: "column",
-                            sm: "row",
+                            sm: "column",
+                            md: "row",
                         },
                         alignItems: "center",
                         width: "100%",
+                        top: {
+                            xs: "0",
+                            md: item.type === "brand" ? "-4rem" : item.type === "detailed" ? "-2rem" : "0",
+                        }
                     }}>
 
                         {/* Icon holder */}
@@ -75,8 +82,7 @@ const AdvancedStatistics = () => {
                             top: "-2rem",
                             left: {
                                 xs: "calc(50% +50px)",
-                                sm: "10%",
-                                lg: "10%",
+                                lg: "6%",
                             },
                             borderRadius: "60px",
                             background: "var(--very-dark-blue)",
@@ -101,15 +107,15 @@ const AdvancedStatistics = () => {
                             backgroundColor: "var(--cyan)",
                             width: {
                                 xs: "0.5rem",
-                                sm: "8rem",
+                                md: "6rem",
                             },
                             height: {
                                 xs: "8rem",
-                                sm: "0.5rem"
+                                md: "0.5rem"
                             },
                             top: {
                                 xs: "calc(50% + 4rem)",
-                                sm: "calc(50% - 0.5rem)",
+                                md: "calc(50% - 0.5rem)",
                             },
                         }} />
                     </Box>
