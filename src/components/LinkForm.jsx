@@ -43,7 +43,7 @@ const LinkForm = () => {
             };
 
 
-            const response = await fetch("https://luisamlopez-url-shortener-api.onrender.com", requestOptions);
+            const response = await fetch("http://localhost:3001", requestOptions);
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
