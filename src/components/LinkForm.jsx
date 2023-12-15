@@ -47,6 +47,9 @@ const LinkForm = () => {
 
             const result = await response.json();
 
+            console.log(result);
+            console.log(result.result_url);
+
             // Check if the result contains the expected property (result_url)
             if (!result || !result.result_url) {
                 throw new Error('Invalid server response format');
