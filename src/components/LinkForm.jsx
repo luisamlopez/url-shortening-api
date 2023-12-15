@@ -63,8 +63,21 @@ const LinkForm = () => {
             // Clean the form
             values.link = "";
         } catch (error) {
-            console.error('Error:', error.message); // Log the error message
+            console.error('Error:', error); // Log the entire error object
+
+            // Log the response status and headers
+            console.log('Response Status:', response.status);
+            console.log('Response Headers:', response.headers);
+
+            // Try to log the response text, even if an error occurred
+            try {
+                const responseText = await response.text();
+                console.log('Response Text:', responseText);
+            } catch (textError) {
+                console.error('Error reading response text:', textError);
+            }
         }
+
     };
 
 
