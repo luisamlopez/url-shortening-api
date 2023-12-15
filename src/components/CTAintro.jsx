@@ -8,12 +8,24 @@ const CTAintro = () => {
             flexDirection: {
                 xs: "column-reverse",
                 sm: "row",
-                md: "row",
                 lg: "row",
             },
+            px: {
+                xs: '0.5rem',
+                sm: '4rem',
+                lg: '6rem',
+            },
+
             justifyContent: "space-between",
             alignItems: "center",
             width: "100%",
+            mb: {
+                xs: "8rem",
+                sm: "8rem",
+                md: "4.5rem",
+                lg: "4.5rem"
+
+            }
         }}>
             <Box sx={{
                 display: 'flex',
@@ -41,7 +53,7 @@ const CTAintro = () => {
                         md: "3rem",
                         lg: "6rem"
                     },
-                    color: "var(--very-dark-blue)", lineHeight: "3rem", letterSpacing: "-0.2rem", width: "80%"
+                    color: "var(--very-dark-blue)", lineHeight: { sm: "3rem", lg: "5rem" }, letterSpacing: "-0.2rem",
 
                 }}>
                     More than just <br /> shorter links
@@ -60,7 +72,8 @@ const CTAintro = () => {
                 <Button variant="contained" sx={{
                     textTransform: "none", margin: 0, boxShadow: 0, background: "var( --cyan)", borderRadius: 5, ":hover": {
                         background: "var(--light-cyan)", boxShadow: 0
-                    }, width: "150px", fontWeight: 700
+                    }, width: "150px", fontWeight: 700,
+                    fontSize: "1.2rem",
                 }}>
                     Get Started
                 </Button>

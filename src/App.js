@@ -15,12 +15,6 @@ function App() {
           flexDirection: 'column',
           justifyContent: 'center',
           alignItems: 'center',
-          maxWidth: '100%',
-          mx: {
-            xs: '0.5rem',
-            sm: '0.5rem',
-            lg: '6rem',
-          },
           my: {
             xs: '0.5rem',
             sm: '0.5rem',

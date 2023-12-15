@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;600;700&display=swap");
 :root {
   --cyan: hsl(180, 66%, 49%);
   --dark-violet: hsl(257, 27%, 26%);
@@ -7,6 +8,7 @@
   --very-dark-blue: hsl(255, 11%, 22%);
   --very-dark-violet: hsl(260, 8%, 14%);
   --light-cyan: hsl(180, 64%, 72%);
+  --bone-gray: hsl(230, 25%, 95%);
 }
 
 body {
@@ -15,4 +17,5 @@ body {
 
 p {
   font-size: 18px;
+  font-family: "Poppins", sans-serif;
 }
