@@ -30,30 +30,37 @@ const LinkForm = () => {
     const handleSubmit = async (values) => {
         try {
             const myHeaders = new Headers();
-            myHeaders.append("Content-Type", "application/json"); // Update the content type
+            myHeaders.append("Content-Type", "application/json");
 
             const requestOptions = {
                 method: 'POST',
                 headers: myHeaders,
-                body: JSON.stringify({ url: values.link }), // Use JSON.stringify for the body
+                body: JSON.stringify({ url: values.link }),
                 redirect: 'follow',
             };
 
-            const response = await fetch(process.env.REACT_APP_UR, requestOptions); // Update the URL
+            const response = await fetch(process.env.REACT_APP_URL, requestOptions);
+
             if (!response.ok) {
                 throw new Error('Network response was not ok');
-            } else {
-                const result = await response.json();
-                // Push the new link to the links array
-                setLinks([...links, { original: values.link, short: result.result_url }]);
-                // update the local storage
-                localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
-
-                // Clean the form
-                values.link = "";
             }
+
+            const result = await response.json();
+
+            // Check if the result contains the expected property (result_url)
+            if (!result || !result.result_url) {
+                throw new Error('Invalid server response format');
+            }
+
+            // Push the new link to the links array
+            setLinks([...links, { original: values.link, short: result.result_url }]);
+            // update the local storage
+            localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
+
+            // Clean the form
+            values.link = "";
         } catch (error) {
-            console.error('Error:', error);
+            console.error('Error:', error.message); // Log the error message
         }
     };
 
