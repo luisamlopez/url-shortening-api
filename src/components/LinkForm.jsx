@@ -49,6 +49,8 @@ const LinkForm = () => {
 
             console.log(result);
             console.log(result.result_url);
+            const responseText = await response.text();
+            console.log('Response Text:', responseText);
 
             // Check if the result contains the expected property (result_url)
             if (!result || !result.result_url) {
@@ -85,13 +87,13 @@ const LinkForm = () => {
                 placeholder="Shorten a link here..."
                 sx={{
                     height: "55px",
-                    borderRadius: "12px",
+                    borderRadius: "14px",
                     fontSize: "1.2rem",
                     fontWeight: "700",
                     backgroundColor: "#fff",
                     "& .MuiOutlinedInput-root": {
                         "& fieldset": {
-                            borderRadius: "12px",
+                            borderRadius: "14px",
                         },
                         "&.Mui-focused fieldset": {
                             borderColor: "var(--cyan)",
