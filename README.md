@@ -43,4 +43,4 @@ Users should be able to:
 
 ## Acknowledgments
 
-Thanks to the frontmentor community for the support and the feedback, specially to [Shaswat0707](https://github.com/Shaswat0707) for the idea to change the API.
+Thanks to the frontmentor community for the support and the feedback, especially to [Shaswat0707](https://github.com/Shaswat0707) for the idea to change the API.
