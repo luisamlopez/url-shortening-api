@@ -21,6 +21,7 @@ function App() {
             xs: '0.5rem',
             sm: '0.5rem',
           },
+          width: '100%',
         }}>
         <CTAintro />
         <LinkForm />

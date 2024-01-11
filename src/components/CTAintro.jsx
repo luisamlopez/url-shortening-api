@@ -81,8 +81,8 @@ const CTAintro = () => {
             <Box
                 component="img" src={illustration} alt="illustration"
                 width={{
-                    xs: "350px",
-                    md: "450px",
+                    xs: "300px",
+                    md: "350px",
                     lg: "600px",
                 }}
 

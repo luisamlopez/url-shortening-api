@@ -17,7 +17,7 @@ const LinkCard = ({ original, short }) => {
                 display: "flex",
                 flexDirection: {
                     xs: "column",
-                    sm: "row",
+                    sm: "column",
                     lg: "row"
                 },
                 justifyContent: "space-between",
@@ -33,7 +33,7 @@ const LinkCard = ({ original, short }) => {
                     fontWeight: 600,
                     width: {
                         xs: "100%",
-                        sm: "60%",
+                        sm: "100%",
                         lg: "60%"
                     },
                     overflow: "hidden",
@@ -48,7 +48,7 @@ const LinkCard = ({ original, short }) => {
             <Box sx={{
                 display: {
                     xs: "block",
-                    sm: "none",
+                    sm: "block",
                     lg: "none"
                 },
                 width: "100%",
@@ -62,14 +62,14 @@ const LinkCard = ({ original, short }) => {
                     display: "flex",
                     flexDirection: {
                         xs: "column",
-                        sm: "row",
+                        sm: "column",
                         lg: "row"
                     },
                     justifyContent: "space-between",
                     alignItems: "center",
                     width: {
                         xs: "100%",
-                        sm: "40%",
+                        sm: "100%",
                         lg: "40%"
                     },
                     placeSelf: "flex-end",
