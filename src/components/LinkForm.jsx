@@ -86,46 +86,48 @@ const LinkForm = () => {
 
     const handleSubmit = async (values) => {
         try {
+            const raw = JSON.stringify({ "url": values.link });
+            const cookie = process.env.REACT_APP_COOKIE;
+            console.log(cookie);
+            const token = process.env.REACT_APP_TOKEN;
+            console.log(token);
+
             const requestOptions = {
                 method: 'POST',
+                redirect: 'follow',
                 headers: {
                     'Content-Type': 'application/json',
+                    "Cookie": cookie
+
                 },
-                body: JSON.stringify({ url: values.link }), // Ensure you're sending JSON data with the 'url' property
-                redirect: 'follow',
+                body: raw,
+
+
             };
 
-            const response = await fetch("https://cleanuri.com/api/v1/shorten", requestOptions);
 
-            console.log("response " + response)
+            const response = await fetch(`https://api.tinyurl.com/create?api_token=${token}`, requestOptions);
+
+
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
-            }
-
-            const responseText = await response.text();
-            console.log('Response Text:', responseText);
-
-            if (!responseText) {
-                throw new Error('Empty response from the server');
-            }
-
-            const result = JSON.parse(responseText);
-            // Check if the result contains the expected property (result_url)
-            if (!result || !result.result_url) {
-                throw new Error(response);
             } else {
-                console.log(result);
-                console.log(result.result_url);
+                console.log("ok");
+
+                const res = (JSON.parse(await response.text()));
+                console.log(res.data.tiny_url);
+
                 // Push the new link to the links array
-                setLinks([...links, { original: values.link, short: result.result_url }]);
+                setLinks([...links, { original: values.link, short: res.data.tiny_url }]);
                 // update the local storage, order from most recent to oldest
-                localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
+                localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: res.data.tiny_url }]));
 
 
                 // Clean the form
                 values.link = "";
             }
+
 
 
         } catch (error) {
