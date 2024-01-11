@@ -89,16 +89,15 @@ const LinkForm = () => {
             const requestOptions = {
                 method: 'POST',
                 headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded',
-                    'Access-Control-Allow-Origin': '*',
+                    'Content-Type': 'application/json',
                 },
-                form: {
-                    'url': values.link
-                },
+                body: JSON.stringify({ url: values.link }), // Ensure you're sending JSON data with the 'url' property
+                redirect: 'follow',
             };
 
-
             const response = await fetch("https://cleanuri.com/api/v1/shorten", requestOptions);
+
+            console.log("response " + response)
 
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -112,9 +111,6 @@ const LinkForm = () => {
             }
 
             const result = JSON.parse(responseText);
-
-
-
             // Check if the result contains the expected property (result_url)
             if (!result || !result.result_url) {
                 throw new Error(response);
@@ -123,8 +119,10 @@ const LinkForm = () => {
                 console.log(result.result_url);
                 // Push the new link to the links array
                 setLinks([...links, { original: values.link, short: result.result_url }]);
-                // update the local storage
+                // update the local storage, order from most recent to oldest
                 localStorage.setItem("links", JSON.stringify([...links, { original: values.link, short: result.result_url }]));
+
+
                 // Clean the form
                 values.link = "";
             }
@@ -163,9 +161,13 @@ const LinkForm = () => {
                         "&.Mui-focused fieldset": {
                             borderColor: "var(--cyan)",
                             borderRadius: "14px",
+                        }, "&.Mui-active fieldset": {
+                            borderColor: "var(--cyan)",
+                            borderRadius: "14px",
                         },
                         "&.Mui-error fieldset": {
                             borderColor: "var(--red)",
+                            borderRadius: "14px",
                         },
                     },
                     "& .MuiFormHelperText-contained": {
